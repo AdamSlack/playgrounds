@@ -1,0 +1,21 @@
+{
+  "name": "serverless-playground",
+  "version": "1.0.0",
+  "description": "playgrounds for various things. Each branch is its own playground",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdamSlack/playgrounds.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdamSlack/playgrounds/issues"
+  },
+  "homepage": "https://github.com/AdamSlack/playgrounds#readme",
+  "devDependencies": {
+    "serverless-webpack": "^5.3.4"
+  }
+}

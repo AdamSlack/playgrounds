@@ -1,3 +1,5 @@
+**/.serverless/*
+
 # Local .terraform directories
 **/.terraform/*
 
