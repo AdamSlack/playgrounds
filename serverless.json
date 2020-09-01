@@ -1,0 +1,20 @@
+{
+    "service": "cats",
+    "functions": {
+        "createCat": {
+            "events": [
+                {
+                    "http": "post cats"
+                }
+            ]
+        },
+        "deleteCat": {
+            "events": [
+                {
+                    "http": "delete cats"
+                }
+            ]
+        }
+    },
+    "reources": {}
+}
