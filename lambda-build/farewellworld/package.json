@@ -9,7 +9,9 @@
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
-    "buildAndDeploy": "npm run build && cdk deploy"
+    "destroy": "cdk destroy",
+    "buildAndDeploy": "npm run build && cdk deploy",
+    "cleanAndDestroy": "npm run clean && npm run destroy"
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.62.0",
