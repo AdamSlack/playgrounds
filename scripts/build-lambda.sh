@@ -2,8 +2,8 @@
 
 # Script assumes you are running this from the project root.
 # i.e. run this script with ./scripts/build-lambda.sh
-LAMBDA_DIR="./lambda"
-BUILD_DIR="./lambda-build"
+LAMBDA_DIR="./backend/lambda"
+BUILD_DIR="./backend/lambda-build"
 echo $LAMBDA_DIR
 echo $BUILD_DIR
 
