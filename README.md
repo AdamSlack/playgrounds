@@ -1,2 +1,3 @@
-# playgrounds
-playgrounds for various things. Each branch is its own playground
+# CDK Playground
+
+a sample project deploying a lambda/apigateway backend with a react/s3 frontend using cdk

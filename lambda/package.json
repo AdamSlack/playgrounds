@@ -1,0 +1,21 @@
+{
+  "name": "playgrounds",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "clean": "tsc --build --clean"
+  },
+  "dependencies": {
+    "@middy/core": "^1.4.0",
+    "@middy/http-json-body-parser": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.10",
+    "@types/node": "10.17.27",
+    "source-map-support": "^0.5.16",
+    "ts-node": "^8.1.0",
+    "typescript": "~3.9.7"
+  }
+}
