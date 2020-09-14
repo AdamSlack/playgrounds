@@ -1,0 +1,77 @@
+**/lambdas-build/
+**/lambda-build/
+
+# VSCode extension
+
+# Store launch config in repo but not settings
+.vscode/settings.json
+/.favorites.json
+
+# TypeScript incremental build states
+*.tsbuildinfo
+
+# Local state files & OS specifics
+.DS_Store
+node_modules/
+lerna-debug.log
+dist/
+pack/
+.BUILD_COMPLETED
+.local-npm/
+.tools/
+coverage/
+.nyc_output
+.nycrc
+.LAST_BUILD
+*.sw[a-z]
+*~
+.idea
+junit.xml
+
+# We don't want tsconfig at the root
+/tsconfig.json
+
+# CDK Context & Staging files
+cdk.context.json
+.cdk.staging/
+cdk.out/
+*.tabl.json
+
+# Yarn error log
+yarn-error.log
+
+# Parcel default cache directory
+.parcel-cache
+
+# Cloud9
+.c9
+
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+
+# Ignore any .tfvars files that are generated automatically for each Terraform run. Most
+# .tfvars files are managed as part of configuration and so should be included in
+# version control.
+#
+# example.tfvars
+
+# Ignore override files as they are usually used to override resources locally and so
+# are not checked in
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Include override files you do wish to add to version control using negated pattern
+#
+# !example_override.tf
+
+# Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
+# example: *tfplan*

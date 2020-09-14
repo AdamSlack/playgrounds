@@ -4,7 +4,6 @@ import * as apigateway from "@aws-cdk/aws-apigateway"
 import * as route53 from '@aws-cdk/aws-route53'
 import * as targets from '@aws-cdk/aws-route53-targets'
 import * as acm from '@aws-cdk/aws-certificatemanager'
-import * as s3 from '@aws-cdk/aws-s3'
 
 import * as path from 'path'
 import { Bucket } from '@aws-cdk/aws-s3'
@@ -17,14 +16,14 @@ export class GreetingsApiStack extends cdk.Stack {
     const helloWorldLambda = new lambda.Function(this, 'HelloWorld', {
       runtime: lambda.Runtime.NODEJS_12_X,
       handler: 'index.handler',
-      code: lambda.Code.fromAsset(path.join(__dirname, '../lambda-build/helloworld')),
+      code: lambda.Code.fromAsset(path.join(__dirname, '../../lambda-build/helloworld')),
       functionName: 'HelloWorldTestLambda'
     })
 
     const farewellWorldLambda = new lambda.Function(this, 'FareWellWorld', {
       runtime: lambda.Runtime.NODEJS_12_X,
       handler: 'index.handler',
-      code: lambda.Code.fromAsset(path.join(__dirname, '../lambda-build/farewellworld')),
+      code: lambda.Code.fromAsset(path.join(__dirname, '../../lambda-build/farewellworld')),
       functionName: 'FarewellWorldTestLambda'
     })
 

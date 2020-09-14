@@ -2,8 +2,8 @@
 
 # Script assumes you are running this from the project root.
 # i.e. run this script with ./scripts/build-lambda.sh
-LAMBDA_DIR="./backend/lambda"
-BUILD_DIR="./backend/lambda-build"
+LAMBDA_DIR="./lambda"
+BUILD_DIR="./lambda-build"
 echo $LAMBDA_DIR
 echo $BUILD_DIR
 
@@ -24,13 +24,13 @@ fi
 
 echo "Starting Build..."
 
-rsync -av --exclude '**/node_modules/' --exclude '**/*.test*' --exclude '**/*.ts*' --exclude 'tsconfig.json' $LAMBDA_DIR/* $BUILD_DIR
+rsync -av --exclude '**/node_modules/' --exclude '**/*.test*' --exclude '**/*.ts*' --exclude 'tsconfig.json' --exclude 'package.json' --exclude 'package-lock.json' $LAMBDA_DIR/* $BUILD_DIR
 
 echo "Installing Production Dependencies"
 for dir in $BUILD_DIR/*/
 do
   echo ${dir}
-  cp package.json ${dir}
+  cp $LAMBDA_DIR/package.json ${dir}
   npm install --production --prefix ${dir}
   # zip -rmj "${dir%/}.zip" "${dir%/}"
   # rmdir ${dir}

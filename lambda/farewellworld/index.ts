@@ -14,4 +14,7 @@ const farewellBuilder = async (event: { body: { target: string }}): Promise<{ bo
 const handler = middy(farewellBuilder)
     .use(jsonBodyParser())
 
-export { handler }
+export {
+    handler,
+    farewellBuilder
+}
