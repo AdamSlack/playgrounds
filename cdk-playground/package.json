@@ -1,0 +1,46 @@
+{
+  "name": "playgrounds",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:cdk": "npm run build --prefix ./cdk && ./scripts/build-lambda.sh",
+    "build:lambda": "npm run build --prefix ./lambda && ./scripts/build-lambda.sh",
+    "build:frontend": "npm run build --prefix ./greetings-app",
+    "build": "npm run build:lambda && npm run build:cdk && npm run build:frontend",
+    "deploy:cdk": "npm run deploy --prefix ./cdk",
+    "deploy:frontend": "npm run deploy --prefix ./greetings-app",
+    "deploy": "npm run deploy:cdk && npm run deploy:frontend",
+    "build:deploy:backend": "npm run build:lambda && npm run build:cdk && npm run deploy:cdk",
+    "build:deploy": "npm run build && npm run deploy",
+    "clean:cdk": "npm run clean --prefix ./lambda",
+    "clean:lambda": "npm run clean --prefix ./lambda",
+    "clean": "npm run clean:cdk && npm run clean:lambda",
+    "destroy:cdk": "npm run destroy --prefix ./cdk",
+    "clean:destroy:all": "npm run clean:lambda && npm run clean:cdk && npm run destroy:cdk",
+    "test:unit": "jest . --config=./tests/config/jest.unit.config.js",
+    "start": "npm run start --prefix ./greetings-app",
+    "install": "npm install --prefix ./lambda && npm install --prefix ./cdk && npm install --prefix ./greetings-app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdamSlack/playgrounds.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdamSlack/playgrounds/issues"
+  },
+  "homepage": "https://github.com/AdamSlack/playgrounds#readme",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.62",
+    "@types/jest": "^26.0.10",
+    "@types/node": "10.17.27",
+    "jest": "^26.4.2",
+    "source-map-support": "^0.5.16",
+    "ts-jest": "^26.2.0",
+    "ts-node": "^8.1.0",
+    "typescript": "~3.9.7"
+  }
+}
