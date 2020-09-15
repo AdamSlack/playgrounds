@@ -1,13 +1,13 @@
-import axios from 'axios'
 import { morphism, createSchema } from 'morphism'
+import middy from '@middy/core'
 
-import { Account, AccountType, ApiAccount, ApiTransaction, Transaction, TransactionType } from './SimpleData'
-
+import { Account, AccountType, Transaction, TransactionType } from '../interfaces/Account'
+import { ApiAccount, ApiTransaction } from '../interfaces/ApiAccount'
 
 const transactionSchema = createSchema<Transaction, ApiTransaction>({
     id: 'id',
     destinationAccountId: 'destinationAccount',
-    sendingAccountId: 'sourceAccount',
+    sendingAccountId: 'sendingAccount',
     transactionDate: {
         path: 'timestamp',
         fn: (timestamp) => new Date(timestamp).toISOString()
@@ -35,13 +35,17 @@ const accountSchema = createSchema<Account, ApiAccount>({
     transactions: (source) => morphism(transactionSchema, source.transactions)
 })
 
+class TransformApiAccountToAccount implements middy.MiddlewareObject<any, any, any> {
+    constructor () {}
 
-const handler = async () : Promise<Account> => {
-    const apiAccount = (await axios.get('some-fake-url.com')).data
-    return morphism(accountSchema, apiAccount)
+    public static create (): TransformApiAccountToAccount {
+        return new TransformApiAccountToAccount()
+    }
+
+    public after: middy.MiddlewareFunction<any, any> = async (handler: middy.HandlerLambda) => {
+        handler.response = morphism(accountSchema, handler.response)
+        return
+    }
 }
 
-
-export {
-    handler
-}
+export default TransformApiAccountToAccount.create
