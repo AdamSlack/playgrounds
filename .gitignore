@@ -1,3 +1,6 @@
+<<<<<<< HEAD:serverless-playground/.gitignore
+**/.serverless/*
+=======
 **/lambdas-build/
 **/lambda-build/
 
@@ -45,6 +48,7 @@ yarn-error.log
 
 # Cloud9
 .c9
+>>>>>>> master:cdk-playground/.gitignore
 
 # Local .terraform directories
 **/.terraform/*

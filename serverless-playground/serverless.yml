@@ -1,0 +1,37 @@
+
+service: cats
+provider:
+    name: aws
+    region: "eu-west-2"
+    runtime: "nodejs12.x"
+    memorySize: 512
+    timeout: 3
+    versionFunctions: false
+    profile: "home"
+    deploymentBucket:
+
+package:
+    individually: true
+    exclude:
+    - ./**
+    include:
+    - node-modules/**
+
+functions:
+    farewellWorld:
+        handler: "functions/farewellWorld/index.handler"
+        name: "farewell-world-lambda"
+        description: "returns a farewell"
+        provisionedConcurrency: 1
+        package:
+            include:
+            - functions/farewellWorld/**
+
+    helloWorld:
+        handler: "functions/helloWorld/index.handler"
+        name: "hello-world-lambda"
+        description: "returns a greeting"
+        provisionedConcurrency: 1
+        package:
+            include:
+            - functions/helloWorld/**
