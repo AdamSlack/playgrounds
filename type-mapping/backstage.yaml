@@ -12,3 +12,6 @@ spec:
   type: service
   lifecycle: production
   owner: adamslack
+metadata:
+  annotations:
+    backstage.io/techdocs-ref: dir:./
