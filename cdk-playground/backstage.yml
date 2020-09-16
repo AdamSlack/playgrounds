@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: CDK Playground
+  description: A Couple of Lambdas with a react app using CDK to provision infrastucture
+  tags:
+    - cdk
+    - aws
+    - aws-lambda
+    - react
+    - typescript
+spec:
+  type: service
+  lifecycle: production
+  owner: adamslack

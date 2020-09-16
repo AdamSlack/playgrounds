@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Serverless Framework Playground
+  description: A Playground using the serverless framework to provision infrastucture and deploy a lambda
+  tags:
+    - serverless
+    - aws
+    - aws-lambda
+spec:
+  type: service
+  lifecycle: production
+  owner: adamslack

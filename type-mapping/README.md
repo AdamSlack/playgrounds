@@ -4,7 +4,7 @@ An example in typescript using the node.js morphism lib with middy to transform 
 
 ## Structure
 
-Tests are implemented under `./tests`
+Tests are implemented under `./tests` and can be executed using `npm run test`
 
 Example Lambda, interfaces, middleware, and morphisms are implemented under `./src`
 
