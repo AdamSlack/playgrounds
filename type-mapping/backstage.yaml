@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: Middy Morphism
+  name: middy-morphism
   description: An implementation of a Morphism with a Middy middleware to map an object returned from lambda to a different type
   tags:
     - typescript
