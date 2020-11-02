@@ -1,0 +1,29 @@
+li.repository-thumbnail {
+  width: 12em;
+  height: 12em;
+  padding: 1em;
+  word-wrap: break-word;
+  border: solid 1px #fafafa;
+  background-color: #fafafa;
+  margin: 1em;
+}
+
+li.repository-thumbnail div.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+li.repository-thumbnail div.header a {
+  margin-left: 0.5em;
+}
+
+li.repository-thumbnail a,
+li.repository-thumbnail a:visited {
+  text-decoration: none;
+  color: darkblue;
+}
+
+li.repository-thumbnail div.content {
+  width: 12em;
+}

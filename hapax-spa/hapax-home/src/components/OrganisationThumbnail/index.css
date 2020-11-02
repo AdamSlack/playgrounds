@@ -1,0 +1,13 @@
+li.organisation-thumbnail {
+  margin: 0.25em;
+  list-style: none;
+}
+
+li.organisation-thumbnail div {
+  text-align: center;
+  width: 5em;
+}
+
+li.organisation-thumbnail img {
+  width: 40px;
+}

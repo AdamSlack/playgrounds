@@ -1,0 +1,11 @@
+div.dot-grid-icon {
+  display: flex;
+  flex-wrap: wrap;
+  width: 36px;
+}
+div.dot-grid-icon div {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  margin: 1px;
+}
