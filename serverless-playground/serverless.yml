@@ -1,37 +1,100 @@
-
 service: cats
 provider:
-    name: aws
-    region: "eu-west-2"
-    runtime: "nodejs12.x"
-    memorySize: 512
-    timeout: 3
-    versionFunctions: false
-    profile: "home"
-    deploymentBucket:
+  name: aws
+  region: "eu-west-2"
+  runtime: "nodejs12.x"
+  memorySize: 512
+  timeout: 3
+  versionFunctions: false
+  deploymentBucket:
+  apiGateway:
+    metrics: true
+    
+plugins:
+  - serverless-plugin-aws-alerts
+
+custom:
+  alerts:
+    dashboards: false
+    nameTemplate: $[functionName]-$[metricName]-Alarm # Optionally - naming template for alarms, can be overwritten in definitions
+    topics:
+      alarm: ${self:service}-alerts-alarm
+    definitions:  # these defaults are merged with your definitions
+      functionErrors:
+        period: 300 # override period
+        threshold: 0.1
+      strictFunctionErrors:
+        actionsEnabled: false # Indicates whether actions should be executed during any changes to the alarm state. The default is TRUE
+        description: 'Alarm on any Lambda errors'
+        namespace: 'AWS/Lambda'
+        metric: Errors
+        threshold: 0
+        statistic: Average
+        period: 300
+        evaluationPeriods: 1
+        datapointsToAlarm: 1
+        comparisonOperator: GreaterThanThreshold
+      stringAspiGatewayError:
+        actionsEnabled: false
+        description: 'Alarm on any 5xx responses'
+        threshold: 0
+        statistic: Average
+        period: 300
+        namespace: 'AWS/ApiGateway'
+        evaluationPeriods: 1
+        datapointsToAlarm: 1
+        metric: '5XXError'
+        comparisonOperator: GreaterThanThreshold
+        omitDefaultDimension: true
+        dimensions:
+          - Name: Resource
+            Value: /farewell
+          - Name: Method
+            Value: GET
+          - Name: ApiName
+            Value: dev-cats
+          - Name: Stage
+            Value: dev          
+
 
 package:
-    individually: true
-    exclude:
+  individually: true
+  exclude:
     - ./**
-    include:
+  include:
     - node-modules/**
 
 functions:
-    farewellWorld:
-        handler: "functions/farewellWorld/index.handler"
-        name: "farewell-world-lambda"
-        description: "returns a farewell"
-        provisionedConcurrency: 1
-        package:
-            include:
-            - functions/farewellWorld/**
+  farewellWorld:
+    handler: "functions/farewellWorld/index.handler"
+    name: "farewell-world-lambda"
+    description: "returns a farewell"
+    provisionedConcurrency: 1
+    package:
+     include:
+      - functions/farewellWorld/**
+    events:
+      - http:
+          path: /farewell
+          method: get
+          cors: true
+          private: false
+    alarms:
+      - customFunctionErrors
+      - apiGatewayError
 
-    helloWorld:
-        handler: "functions/helloWorld/index.handler"
-        name: "hello-world-lambda"
-        description: "returns a greeting"
-        provisionedConcurrency: 1
-        package:
-            include:
-            - functions/helloWorld/**
+  helloWorld:
+    handler: "functions/helloWorld/index.handler"
+    name: "hello-world-lambda"
+    description: "returns a greeting"
+    provisionedConcurrency: 1
+    package:
+      include:
+        - functions/helloWorld/**
+    events:
+      - http:
+          path: /hello
+          method: get
+          cors: false
+    alarms:
+      - customFunctionErrors

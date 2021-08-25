@@ -1,6 +1,9 @@
 const handler = async () => {
     return {
-        "farewell": "Farewell World!"
+        statusCode: 200,
+        body: JSON.stringify({
+            farewell: "Farewell World!"
+        })
     }
 }
 
