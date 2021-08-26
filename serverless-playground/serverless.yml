@@ -23,6 +23,7 @@ custom:
       functionErrors:
         period: 300 # override period
         threshold: 0.1
+
       strictFunctionErrors:
         actionsEnabled: false # Indicates whether actions should be executed during any changes to the alarm state. The default is TRUE
         description: 'Alarm on any Lambda errors'
@@ -34,7 +35,8 @@ custom:
         evaluationPeriods: 1
         datapointsToAlarm: 1
         comparisonOperator: GreaterThanThreshold
-      stringAspiGatewayError:
+      
+      strictApiGatewayError:
         actionsEnabled: false
         description: 'Alarm on any 5xx responses'
         threshold: 0
@@ -80,7 +82,7 @@ functions:
           cors: true
           private: false
     alarms:
-      - customFunctionErrors
+      - strictFunctionErrors
       - apiGatewayError
 
   helloWorld:
@@ -97,4 +99,4 @@ functions:
           method: get
           cors: false
     alarms:
-      - customFunctionErrors
+      - strictFunctionErrors
